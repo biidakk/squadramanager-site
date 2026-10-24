@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Squadra Manager – quick football management</title>
-<meta name="description" content="Squadra Manager is a quick, simple football manager for Android and iPhone. Live matches, transfers, youth academy, cups, Europe and national teams. No ads.">
+<meta name="description" content="Squadra Manager is a quick, simple football manager for Android and iPhone. 44 countries, deep lower leagues, live matches, transfers, youth academy, cups, Europe and national teams. No ads, plays offline.">
 <meta property="og:title" content="Squadra Manager">
 <meta property="og:description" content="Quick football management. Build your club, win the league, sell big.">
 <meta property="og:image" content="https://squadramanager.com/og.png">
@@ -20,14 +20,26 @@
   header { display: flex; align-items: center; gap: 12px; padding: 18px 0; }
   header img { width: 40px; height: 40px; border-radius: 10px; }
   header b { font-size: 20px; letter-spacing: .02em; }
-  .hero { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center; padding: 40px 0 56px; }
+  header nav { margin-left: auto; display: flex; gap: 18px; font-size: 15px; }
+  header nav a { color: var(--muted); text-decoration: none; }
+  header nav a:hover { color: var(--text); }
+  .hero { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center; padding: 32px 0 40px; }
   h1 { font: 900 clamp(38px, 6vw, 60px)/1.02 "Arial Black", Arial, sans-serif; margin: 0 0 16px; text-transform: uppercase; }
   h1 span { color: var(--accent); }
-  .lead { font-size: 20px; color: var(--muted); margin: 0 0 28px; }
+  h2 { font-size: 28px; margin: 0 0 16px; }
+  .lead { font-size: 20px; color: var(--muted); margin: 0 0 24px; }
   .btn { display: inline-block; padding: 14px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; margin: 0 10px 10px 0;
     background: linear-gradient(#fff, #dfe9ff); color: #0b3b8c; box-shadow: 0 6px 18px rgba(0,0,0,.3); }
   .btn.ghost { background: transparent; color: var(--text); border: 2px solid var(--line); box-shadow: none; }
+  .store { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 12px; margin: 0 10px 10px 0;
+    background: #000; color: #fff; text-decoration: none; border: 1px solid #666; line-height: 1.15; }
+  .store svg { width: 26px; height: 26px; flex: none; }
+  .store small { display: block; font-size: 11px; color: #ccc; text-transform: uppercase; letter-spacing: .04em; }
+  .store b { font-size: 18px; }
   .note { font-size: 14px; color: var(--muted); }
+  .strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; padding: 16px; margin-bottom: 48px;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-weight: 700; letter-spacing: .02em; }
+  .strip span::before { content: "✓ "; color: var(--gold); }
   .shot { width: 100%; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 20px 50px rgba(0,0,0,.45); display: block; }
   .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-bottom: 56px; }
   .card { background: rgba(13,58,134,.55); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
@@ -37,38 +49,48 @@
   .video { padding-bottom: 32px; }
   .video-box { position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 20px 50px rgba(0,0,0,.45); background: #000; }
   .video-box iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-  .tester { text-align: center; padding: 40px 20px; margin-bottom: 56px; }
-  .tester h2 { margin: 0 0 8px; font-size: 28px; }
+  section.block { margin-bottom: 56px; }
+  .join { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .join ol { margin: 8px 0 0; padding-left: 22px; color: var(--muted); }
+  .join li { margin-bottom: 6px; }
+  details { background: rgba(13,58,134,.55); border: 1px solid var(--line); border-radius: 12px; padding: 14px 20px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 700; }
+  details p { color: var(--muted); margin: 10px 0 2px; }
+  .help { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   footer { border-top: 1px solid rgba(255,255,255,.12); padding: 24px 0 40px; font-size: 14px; color: var(--muted); display: flex; gap: 20px; flex-wrap: wrap; }
   @media (max-width: 820px) {
+    header nav { display: none; }
     .hero { grid-template-columns: 1fr; gap: 28px; padding-top: 16px; }
-    .features { grid-template-columns: 1fr; }
-    .gallery { grid-template-columns: 1fr; }
+    .features, .gallery, .join, .help { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header><img src="icon-512.png" alt=""><b>Squadra Manager</b></header>
+  <header><img src="icon-512.png" alt=""><b>Squadra Manager</b>
+    <nav><a href="#features">Features</a><a href="#play">Play now</a><a href="whats-new.html">What's new</a><a href="#faq">FAQ</a><a href="#help">Help</a><a href="https://discord.gg/F3utmASxm">Discord</a></nav>
+  </header>
 
   <section class="hero">
     <div>
       <h1>Quick football <span>management</span></h1>
       <p class="lead">Take charge of a club, win the league, sell your stars to the big leagues. A full season plays in minutes, not hours.</p>
-      <a class="btn" href="#tester">Become a tester</a>
-      <a class="btn ghost" href="#features">See the game</a>
-      <p class="note">Coming soon to Google Play, then the App Store. No ads.</p>
+      <a class="store" href="#play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3ddc84" d="M3.6 2.2 13.4 12l-9.8 9.8c-.4-.2-.6-.6-.6-1.1V3.3c0-.5.2-.9.6-1.1Zm10.9 10.9 2.6 2.6-11.6 6.6 9-9.2Zm3.9-4.1 3 1.7c.8.5.8 1.6 0 2.1l-3 1.7-2.8-2.8 2.8-2.7ZM5.5 1.7l11.6 6.6-2.6 2.6-9-9.2Z"/></svg><span><small>Android beta</small><b>Google Play</b></span></a>
+      <a class="store" href="#play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.2 10.1.8 1.2 1.8 2.6 3.1 2.5 1.3 0 1.7-.8 3.3-.8 1.5 0 1.9.8 3.3.8 1.4 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.5-1-2.5-3.9ZM14 5.3c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4Z"/></svg><span><small>iPhone beta</small><b>TestFlight</b></span></a>
+      <p class="note">Free beta on Android and iPhone. No ads. Join the community on <a href="https://discord.gg/F3utmASxm">Discord</a>.</p>
     </div>
     <img class="shot" src="shot-hub.jpg" alt="The club hub in Squadra Manager">
   </section>
 
+  <div class="strip"><span>Made by one person</span><span>No ads</span><span>No energy bars</span><span>Plays offline</span><span>6 languages</span></div>
+
   <section class="features" id="features">
     <div class="card"><h3>⚽ Live matches</h3><p>Watch your team play, make changes and switch tactics while the game runs.</p></div>
+    <div class="card"><h3>🪜 Climb the pyramid</h3><p>44 countries with leagues, and deep lower leagues in 17 of them. Start at the very bottom and take a small club to the top.</p></div>
     <div class="card"><h3>💰 Transfers</h3><p>Scout, bid and sell. Clubs from the richest leagues pay big money for your players.</p></div>
     <div class="card"><h3>🌱 Youth academy</h3><p>Bring talents through and turn them into first-team stars, or into your next big sale.</p></div>
-    <div class="card"><h3>🏆 Cups and Europe</h3><p>National cups, three continental competitions and coefficients that move every season.</p></div>
-    <div class="card"><h3>🌍 National teams</h3><p>Real World Cup and Euro history, all-time scorers, and the national job when you earn it.</p></div>
-    <div class="card"><h3>🏟️ Your club</h3><p>Grow the stadium, training and finances season after season.</p></div>
+    <div class="card"><h3>🏆 Cups and Europe</h3><p>National cups, three continental competitions, the World Cup and coefficients that move every season.</p></div>
+    <div class="card"><h3>✏️ Editor</h3><p>Edit players and clubs, export your database and share it, or load one made by somebody else.</p></div>
   </section>
 
   <section class="video">
@@ -82,16 +104,57 @@
     <img class="shot" src="shot-nation.jpg" alt="National team page">
   </section>
 
-  <section class="card tester" id="tester">
-    <h2>Be one of the first players</h2>
-    <p class="note" style="font-size:16px;margin:0 0 20px">We're looking for Android testers. You get the game free before launch: just send us the email address of your Google account.</p>
-    <a class="btn" href="mailto:support@squadramanager.com?subject=I%20want%20to%20test%20Squadra%20Manager">Email us to join</a>
+  <section class="block" id="play">
+    <h2>Play the beta now</h2>
+    <div class="join">
+      <div class="card"><h3>Android</h3>
+        <ol>
+          <li>Join the tester group: <a href="https://groups.google.com/g/squadra-testers">groups.google.com/g/squadra-testers</a> (use the Google account of your phone).</li>
+          <li>Open <a href="https://play.google.com/apps/testing/com.squadramanager.app">the Google Play test page</a> and tap <b>Become a tester</b>.</li>
+          <li>Install Squadra Manager from Google Play.</li>
+        </ol>
+      </div>
+      <div class="card"><h3>iPhone</h3>
+        <ol>
+          <li>Install <b>TestFlight</b> from the App Store.</li>
+          <li>Open <a href="https://testflight.apple.com/join/Wuzga3aW">testflight.apple.com/join/Wuzga3aW</a> on your iPhone.</li>
+          <li>Tap <b>Accept</b>, then <b>Install</b>.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <h2>Questions</h2>
+    <details><summary>Is it free?</summary><p>Yes, the beta is free and there are no ads. If a paid full version comes later, players who joined early keep everything they have.</p></details>
+    <details><summary>Does it need the internet?</summary><p>No. The whole game plays offline on your phone.</p></details>
+    <details><summary>Which countries and leagues are in?</summary><p>44 countries have their own leagues and cups. England, Germany, Spain, Italy, France, Portugal, the Netherlands, Belgium, Austria, Poland, Czechia, Scotland, Turkey, Brazil and Argentina go deep down the pyramid, so you can start in a regional league and climb.</p></details>
+    <details><summary>Are the clubs and players real?</summary><p>The game comes with its own club and player names. With the editor you can rename and edit everything, export it as a database file and load it again in a new career.</p></details>
+    <details><summary>Can I move my save to a new phone?</summary><p>Yes: Export saves your career as a file, and Import loads it on the other phone.</p></details>
+    <details><summary>Which languages does it speak?</summary><p>English, Czech, German, Spanish, Brazilian Portuguese and Turkish.</p></details>
+    <details><summary>I found a bug. What now?</summary><p>Post it in #bugs on our <a href="https://discord.gg/F3utmASxm">Discord</a>, or email us (see below): what you did, what happened, and a screenshot if you can. Every report is read.</p></details>
+  </section>
+
+  <section class="block" id="help">
+    <h2>Help us make it better</h2>
+    <div class="card" style="margin-bottom:16px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px">
+      <div style="flex:1;min-width:240px"><h3>💬 Join us on Discord</h3><p>Report bugs, vote on ideas, share your careers and databases, and hear about every update first.</p></div>
+      <a class="btn" href="https://discord.gg/F3utmASxm">Join the Discord</a>
+    </div>
+    <div class="help">
+      <div class="card"><h3>🐞 Report a bug</h3><p>Something wrong? Send a short description and a screenshot.</p>
+        <p style="margin-top:14px"><a class="btn" href="mailto:support@squadramanager.com?subject=Bug%20report&amp;body=Phone%20and%20game%20version%3A%0AWhat%20I%20did%3A%0AWhat%20happened%3A%0A">Report a bug</a></p></div>
+      <div class="card"><h3>💡 Suggest an idea</h3><p>A feature you miss, a league you want? We add new things every week.</p>
+        <p style="margin-top:14px"><a class="btn ghost" href="mailto:support@squadramanager.com?subject=Idea%20for%20Squadra%20Manager">Send an idea</a></p></div>
+    </div>
   </section>
 
   <footer>
     <span>© 2026 Squadra Manager</span>
-    <a href="privacy.html">Privacy policy</a>
+    <a href="https://discord.gg/F3utmASxm">Discord</a>
+    <a href="whats-new.html">What's new</a>
     <a href="press.html">Press</a>
+    <a href="privacy.html">Privacy policy</a>
     <a href="mailto:support@squadramanager.com">support@squadramanager.com</a>
   </footer>
 </div>
